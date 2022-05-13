@@ -17,6 +17,7 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    perspective: 1000px;
     }
 
 
@@ -28,6 +29,8 @@ body {
         box-shadow: 1px 1px 1px rgba(1, 1, 1, .3);
         cursor: pointer;
         transform: scale(1);
+        transform-style: preserve-3d; /* nao deixa o elemento ficar achatado no plano */
+        transition: transform .9s;
     }
 
     .card:active{
@@ -43,4 +46,15 @@ body {
         position: absolute;
         border-radius: 5px;
         background: #ffffff;
+        backface-visibility: hidden; /* */
+    }
+
+    .card-front {
+        transform: rotateY(180deg);
+    }
+
+    /* flip card anamation */
+
+    .card.flip {
+        transform: rotateY(180deg);
     }
